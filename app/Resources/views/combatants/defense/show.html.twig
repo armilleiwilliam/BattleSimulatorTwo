@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Defense</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ defense.id }}</td>
+            </tr>
+            <tr>
+                <th>Min</th>
+                <td>{{ defense.min }}</td>
+            </tr>
+            <tr>
+                <th>Max</th>
+                <td>{{ defense.max }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if defense.createdAt %}{{ defense.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if defense.updatedAt %}{{ defense.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_defense_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('combatants_defense_edit', { 'id': defense.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

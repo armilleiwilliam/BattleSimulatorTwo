@@ -1,0 +1,4 @@
+services:
+#    combatants.example:
+#        class: CombatantsBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

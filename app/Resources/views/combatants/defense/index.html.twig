@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Defenses list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for defense in defenses %}
+            <tr>
+                <td><a href="{{ path('combatants_defense_show', { 'id': defense.id }) }}">{{ defense.id }}</a></td>
+                <td>{{ defense.min }}</td>
+                <td>{{ defense.max }}</td>
+                <td>{% if defense.createdAt %}{{ defense.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if defense.updatedAt %}{{ defense.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('combatants_defense_show', { 'id': defense.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('combatants_defense_edit', { 'id': defense.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_defense_new') }}">Create a new defense</a>
+        </li>
+    </ul>
+{% endblock %}

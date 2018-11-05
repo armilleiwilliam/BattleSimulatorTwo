@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Health</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ health.id }}</td>
+            </tr>
+            <tr>
+                <th>Min</th>
+                <td>{{ health.min }}</td>
+            </tr>
+            <tr>
+                <th>Max</th>
+                <td>{{ health.max }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if health.createdAt %}{{ health.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if health.updatedAt %}{{ health.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_health_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('combatants_health_edit', { 'id': health.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

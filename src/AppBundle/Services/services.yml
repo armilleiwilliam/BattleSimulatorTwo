@@ -1,0 +1,6 @@
+services:
+    MerchantTransactionsBundle\Classes\ExceptionHandler:
+          public: true
+
+    app.exception.handler:
+          class: 'Classes/ExceptionHandler'

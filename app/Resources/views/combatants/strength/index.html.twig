@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Strengths list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for strength in strengths %}
+            <tr>
+                <td><a href="{{ path('combatants_strength_show', { 'id': strength.id }) }}">{{ strength.id }}</a></td>
+                <td>{{ strength.min }}</td>
+                <td>{{ strength.max }}</td>
+                <td>{% if strength.createdAt %}{{ strength.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if strength.updatedAt %}{{ strength.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('combatants_strength_show', { 'id': strength.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('combatants_strength_edit', { 'id': strength.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_strength_new') }}">Create a new strength</a>
+        </li>
+    </ul>
+{% endblock %}

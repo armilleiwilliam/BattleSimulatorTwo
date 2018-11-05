@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Header
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h1>{% block titleEdit %}Defense edit{% endblock %}</h1>
+
+                        {% block propertyValueManagement %}
+                            {{ form_start(edit_form) }}
+                            {{ form_widget(edit_form) }}
+                            <input type="submit" value="Edit" class="form-control btn btn-primary dropdown-toggle"/>
+                            {{ form_end(edit_form) }}
+                        {% endblock %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="{{ path('combatants_defense_index') }}">Back to the list</a>
+                    </div>
+                    <div class="col-md-4">
+                        {%  block deleteButton %}
+                            {{ form_start(delete_form) }}
+                            <input type="submit" value="Delete" class="form-control btn btn-danger dropdown-toggle">
+                            {{ form_end(delete_form) }}
+                        {% endblock %}
+                    </div>
+                    <div class="col-md-4">
+                        {% block linkProperty %}
+                            <a href="{{ path('combatants_health_index') }}">Back to the list</a>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                Footer
+            </div>
+        </div>
+    </div>
+{% endblock %}

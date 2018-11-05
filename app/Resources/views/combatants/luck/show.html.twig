@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Luck</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ luck.id }}</td>
+            </tr>
+            <tr>
+                <th>Min</th>
+                <td>{{ luck.min }}</td>
+            </tr>
+            <tr>
+                <th>Max</th>
+                <td>{{ luck.max }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if luck.createdAt %}{{ luck.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if luck.updatedAt %}{{ luck.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_luck_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('combatants_luck_edit', { 'id': luck.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

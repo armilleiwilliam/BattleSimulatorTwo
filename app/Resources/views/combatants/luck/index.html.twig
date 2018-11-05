@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lucks list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for luck in lucks %}
+            <tr>
+                <td><a href="{{ path('combatants_luck_show', { 'id': luck.id }) }}">{{ luck.id }}</a></td>
+                <td>{{ luck.min }}</td>
+                <td>{{ luck.max }}</td>
+                <td>{% if luck.createdAt %}{{ luck.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if luck.updatedAt %}{{ luck.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('combatants_luck_show', { 'id': luck.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('combatants_luck_edit', { 'id': luck.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_luck_new') }}">Create a new luck</a>
+        </li>
+    </ul>
+{% endblock %}

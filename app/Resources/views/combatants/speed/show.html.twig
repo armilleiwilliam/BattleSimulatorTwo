@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Speed</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ speed.id }}</td>
+            </tr>
+            <tr>
+                <th>Min</th>
+                <td>{{ speed.min }}</td>
+            </tr>
+            <tr>
+                <th>Max</th>
+                <td>{{ speed.max }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if speed.createdAt %}{{ speed.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if speed.updatedAt %}{{ speed.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_speed_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('combatants_speed_edit', { 'id': speed.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'propertyFormTemplate.html.twig' %}
+{% block titleEdit %}Defense edit{% endblock %}
+{% block propertyValueManagement %}
+    {{ form_start(edit_form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Edit" class="form-control btn btn-primary dropdown-toggle"/>
+    {{ form_end(edit_form) }}
+{% endblock %}
+{%  block deleteButton %}
+    {{ form_start(delete_form) }}
+    <input type="submit" value="Delete" class="form-control btn btn-danger dropdown-toggle">
+    {{ form_end(delete_form) }}
+{% endblock %}

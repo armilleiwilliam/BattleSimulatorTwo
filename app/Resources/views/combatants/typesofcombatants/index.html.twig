@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Typesofcombatants list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typesOfCombatant in typesOfCombatants %}
+            <tr>
+                <td><a href="{{ path('combatants_typesofcombatants_show', { 'id': typesOfCombatant.id }) }}">{{ typesOfCombatant.id }}</a></td>
+                <td>{{ typesOfCombatant.name }}</td>
+                <td>{% if typesOfCombatant.createdAt %}{{ typesOfCombatant.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if typesOfCombatant.updatedAt %}{{ typesOfCombatant.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('combatants_typesofcombatants_show', { 'id': typesOfCombatant.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('combatants_typesofcombatants_edit', { 'id': typesOfCombatant.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_typesofcombatants_new') }}">Create a new typesOfCombatant</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Speeds list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for speed in speeds %}
+            <tr>
+                <td><a href="{{ path('combatants_speed_show', { 'id': speed.id }) }}">{{ speed.id }}</a></td>
+                <td>{{ speed.min }}</td>
+                <td>{{ speed.max }}</td>
+                <td>{% if speed.createdAt %}{{ speed.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if speed.updatedAt %}{{ speed.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('combatants_speed_show', { 'id': speed.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('combatants_speed_edit', { 'id': speed.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_speed_new') }}">Create a new speed</a>
+        </li>
+    </ul>
+{% endblock %}

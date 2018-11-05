@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block inlineCss %}
+    <style>
+        .margin-bottom {
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Healths list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for health in healths %}
+            <tr>
+                <td><a href="{{ path('combatants_health_show', { 'id': health.id }) }}" class="btn btn-default">{{ health.id }}</a></td>
+                <td>{{ health.min }}</td>
+                <td>{{ health.max }}</td>
+                <td>{% if health.createdAt %}{{ health.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if health.updatedAt %}{{ health.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a href="{{ path('combatants_health_show', { 'id': health.id }) }}" class="btn btn-primary margin-bottom">Show</a>
+                    <br/>
+                    <a href="{{ path('combatants_health_edit', { 'id': health.id }) }}"  class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('combatants_health_new') }}">Create a new health</a>
+        </li>
+    </ul>
+{% endblock %}
